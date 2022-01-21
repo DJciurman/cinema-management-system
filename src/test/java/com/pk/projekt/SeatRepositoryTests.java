@@ -1,8 +1,7 @@
 package com.pk.projekt;
 
-
-import com.pk.projekt.classes.Aktor;
-import com.pk.projekt.classes.AktorRepository;
+import com.pk.projekt.classes.Seat;
+import com.pk.projekt.classes.SeatRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,18 +12,20 @@ import org.springframework.test.annotation.Rollback;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class AktorRepositoryTests {
+public class SeatRepositoryTests {
 
   @Autowired
-  private AktorRepository repoAktor;
+  private SeatRepository repoSeat;
 
   @Test
-  public void testAddAktor() {
-    Aktor aktor = new Aktor();
+  public void testAddSeat() {
+    Seat seat = new Seat();
 
-    aktor.setImie("Tom");
-    aktor.setNazwisko("Cavanagh");
+    seat.setRow(1);
+    seat.setColumn(1);
 
-    repoAktor.save(aktor);
+    repoSeat.save(seat);
   }
+
+
 }

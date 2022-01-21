@@ -1,8 +1,7 @@
 package com.pk.projekt;
 
-
-import com.pk.projekt.classes.Rezyser;
-import com.pk.projekt.classes.RezyserRepository;
+import com.pk.projekt.classes.Payment;
+import com.pk.projekt.classes.PaymentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,19 +12,19 @@ import org.springframework.test.annotation.Rollback;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class RezyserRepositoryTests {
+public class PaymentRepositoryTests {
 
   @Autowired
-  private RezyserRepository repoRezyser;
+  private PaymentRepository repoPayment;
 
   @Test
-  public void testAddRezyser() {
-    Rezyser rezyser = new Rezyser();
+  public void testAddPayment() {
+    Payment payment = new Payment();
 
-    rezyser.setImie("Andreas");
-    rezyser.setNazwisko("Muschietti");
+    payment.setType("Przelew");
+    payment.setState("Płatność została otrzymana");
 
-    repoRezyser.save(rezyser);
-
+    repoPayment.save(payment);
   }
+
 }

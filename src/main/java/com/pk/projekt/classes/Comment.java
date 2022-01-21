@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "komentarz")
-public class Komentarz {
+public class Comment {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,40 +12,40 @@ public class Komentarz {
   private int id;
 
   @Column(nullable = false, length = 255, name = "opis")
-  private String opis;
+  private String description;
 
   @Column(nullable = false, length = 11, name = "ocena")
-  private int ocena;
+  private int mark;
 
   @ManyToOne
   @JoinColumn(name = "film_id", nullable = false)
-  private Film film;
+  private Movie movie;
 
-  public void setOpis(String opis) {
-    this.opis = opis;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
-  public void setOcena(int ocena) {
-    this.ocena = ocena;
+  public void setMark(int mark) {
+    this.mark = mark;
   }
 
-  public void setFilm(Film film) {
-    this.film = film;
+  public void setMovie(Movie movie) {
+    this.movie = movie;
   }
 
   public int getId() {
     return id;
   }
 
-  public String getOpis() {
-    return opis;
+  public String getDescription() {
+    return description;
   }
 
-  public int getOcena() {
-    return ocena;
+  public int getMark() {
+    return mark;
   }
 
-  public Film getFilm() {
-    return film;
+  public Movie getMovie() {
+    return movie;
   }
 }

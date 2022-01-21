@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "rodzaj")
-public class Rodzaj {
+public class Genre {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,24 +13,24 @@ public class Rodzaj {
   private int id;
 
   @Column(nullable = false, length = 255, unique = true, name = "nazwa")
-  private String nazwa;
+  private String name;
 
-  @ManyToMany(mappedBy = "rodzaj", targetEntity = Film.class, cascade = CascadeType.ALL)
-  private Set<Film> film;
+  @ManyToMany(mappedBy = "genre", targetEntity = Movie.class, cascade = CascadeType.ALL)
+  private Set<Movie> movie;
 
-  public void setNazwa(String Nazwa) {
-    this.nazwa = Nazwa;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public int getId() {
     return id;
   }
 
-  public String getNazwa() {
-    return nazwa;
+  public String getName() {
+    return name;
   }
 
-  public Set<Film> getFilm() {
-    return film;
+  public Set<Movie> getMovie() {
+    return movie;
   }
 }

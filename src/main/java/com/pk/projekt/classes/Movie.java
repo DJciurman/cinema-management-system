@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "film")
-public class Film {
+public class Movie {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,21 +14,21 @@ public class Film {
   private int id;
 
   @Column(nullable = false, length = 255, name = "nazwa")
-  private String nazwa;
+  private String name;
 
   @Column(length = 255, name = "opis")
-  private String opis;
+  private String description;
 
   @ManyToOne
   @JoinColumn(name = "wytwornia_id", nullable = false)
-  private Wytwornia wytwornia;
+  private Studio studio;
 
   @ManyToOne
   @JoinColumn(name = "rezyser_id", nullable = false)
-  private Rezyser rezyser;
+  private Director director;
 
-  @OneToMany(mappedBy = "film", targetEntity = Komentarz.class, cascade = CascadeType.ALL)
-  private Set<Komentarz> komentarz;
+  @OneToMany(mappedBy = "movie", targetEntity = Comment.class, cascade = CascadeType.ALL)
+  private Set<Comment> comment;
 
   @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinTable(name = "rodzaj_film",
@@ -36,7 +36,7 @@ public class Film {
                   @JoinColumn(name = "film_id", referencedColumnName = "id", nullable = false, updatable = false)},
                 inverseJoinColumns = {
           @JoinColumn(name = "rodzaj_id", referencedColumnName = "id", nullable = false, updatable = false)})
-  private Set<Rodzaj> rodzaj = new HashSet<>();
+  private Set<Genre> genre = new HashSet<>();
 
   @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   @JoinTable(name = "aktor_film",
@@ -44,53 +44,60 @@ public class Film {
           @JoinColumn(name = "film_id", referencedColumnName = "id", nullable = false, updatable = false)},
           inverseJoinColumns = {
           @JoinColumn(name = "aktor_id", referencedColumnName = "id", nullable = false, updatable = false)})
-  private Set<Aktor> aktor = new HashSet<>();
+  private Set<Actor> actor = new HashSet<>();
 
-  public void setNazwa(String nazwa) {
-    this.nazwa = nazwa;
+  @OneToMany(mappedBy = "movie", targetEntity = Seance.class, cascade = CascadeType.ALL)
+  private Set<Seance> seance;
+
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public void setOpis(String opis) {
-    this.opis = opis;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
-  public void setWytwornia(Wytwornia wytwornia) {
-    this.wytwornia = wytwornia;
+  public void setWytwornia(Studio studio) {
+    this.studio = studio;
   }
 
-  public void setRezyser(Rezyser rezyser) {
-    this.rezyser = rezyser;
+  public void setRezyser(Director director) {
+    this.director = director;
   }
 
   public int getId() {
     return id;
   }
 
-  public String getNazwa() {
-    return nazwa;
+  public String getName() {
+    return name;
   }
 
-  public String getOpis() {
-    return opis;
+  public String getDescription() {
+    return description;
   }
 
-  public Wytwornia getWytwornia() {
-    return wytwornia;
+  public Studio getStudio() {
+    return studio;
   }
 
-  public Rezyser getRezyser() {
-    return rezyser;
+  public Director getDirector() {
+    return director;
   }
 
-  public Set<Komentarz> getKomentarz() {
-    return komentarz;
+  public Set<Comment> getComment() {
+    return comment;
   }
 
-  public Set<Rodzaj> getRodzaj() {
-    return rodzaj;
+  public Set<Genre> getGenre() {
+    return genre;
   }
 
-  public Set<Aktor> getAktor() {
-    return aktor;
+  public Set<Actor> getActor() {
+    return actor;
+  }
+
+  public Set<Seance> getSeance() {
+    return seance;
   }
 }

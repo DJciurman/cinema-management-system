@@ -1,7 +1,8 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.Rodzaj;
-import com.pk.projekt.classes.RodzajRepository;
+
+import com.pk.projekt.classes.Director;
+import com.pk.projekt.classes.DirectorRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -12,24 +13,19 @@ import org.springframework.test.annotation.Rollback;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class RodzajRepositoryTests {
+public class DirectorRepositoryTests {
 
   @Autowired
-  private RodzajRepository repoRodzaj;
+  private DirectorRepository repoDirector;
 
   @Test
-  public void testAddRodzaj() {
-    Rodzaj rodzaj = new Rodzaj();
+  public void testAddDirector() {
+    Director director = new Director();
 
-    rodzaj.setNazwa("Film");
+    director.setFirstName("Andreas");
+    director.setLastName("Muschietti");
 
-    repoRodzaj.save(rodzaj);
+    repoDirector.save(director);
 
-    rodzaj = new Rodzaj();
-
-    rodzaj.setNazwa("Serial");
-
-    repoRodzaj.save(rodzaj);
   }
-
 }

@@ -1,7 +1,7 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.Wytwornia;
-import com.pk.projekt.classes.WytworniaRepository;
+import com.pk.projekt.classes.Genre;
+import com.pk.projekt.classes.GenreRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -12,17 +12,24 @@ import org.springframework.test.annotation.Rollback;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class WytworniaRepositoryTests {
+public class GenreRepositoryTests {
 
   @Autowired
-  private WytworniaRepository repoWytwornia;
+  private GenreRepository repoGenre;
 
   @Test
-  public void testAddWytwornia() {
-    Wytwornia wytwornia = new Wytwornia();
+  public void testAddGenre() {
+    Genre genre = new Genre();
 
-    wytwornia.setNazwa("DC Comics");
+    genre.setName("Film");
 
-    repoWytwornia.save(wytwornia);
+    repoGenre.save(genre);
+
+    genre = new Genre();
+
+    genre.setName("Serial");
+
+    repoGenre.save(genre);
   }
+
 }
