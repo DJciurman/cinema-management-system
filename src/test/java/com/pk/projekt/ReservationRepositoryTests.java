@@ -1,6 +1,11 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.*;
+import com.pk.projekt.classes.reservation.Reservation;
+import com.pk.projekt.classes.reservation.ReservationRepository;
+import com.pk.projekt.classes.seance.Seance;
+import com.pk.projekt.classes.seance.SeanceRepository;
+import com.pk.projekt.classes.user.User;
+import com.pk.projekt.classes.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

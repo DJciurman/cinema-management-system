@@ -1,6 +1,15 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.*;
+import com.pk.projekt.classes.actor.Actor;
+import com.pk.projekt.classes.actor.ActorRepository;
+import com.pk.projekt.classes.director.Director;
+import com.pk.projekt.classes.director.DirectorRepository;
+import com.pk.projekt.classes.genre.Genre;
+import com.pk.projekt.classes.genre.GenreRepository;
+import com.pk.projekt.classes.movie.Movie;
+import com.pk.projekt.classes.movie.MovieRepository;
+import com.pk.projekt.classes.studio.Studio;
+import com.pk.projekt.classes.studio.StudioRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

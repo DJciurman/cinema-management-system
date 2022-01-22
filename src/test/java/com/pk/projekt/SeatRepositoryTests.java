@@ -1,7 +1,7 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.Seat;
-import com.pk.projekt.classes.SeatRepository;
+import com.pk.projekt.classes.seat.Seat;
+import com.pk.projekt.classes.seat.SeatRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

@@ -1,6 +1,17 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.*;
+import com.pk.projekt.classes.order.Order;
+import com.pk.projekt.classes.order.OrderRepository;
+import com.pk.projekt.classes.payment.Payment;
+import com.pk.projekt.classes.payment.PaymentRepository;
+import com.pk.projekt.classes.seance.Seance;
+import com.pk.projekt.classes.seance.SeanceRepository;
+import com.pk.projekt.classes.seat.Seat;
+import com.pk.projekt.classes.seat.SeatRepository;
+import com.pk.projekt.classes.snack.Snack;
+import com.pk.projekt.classes.snack.SnackRepository;
+import com.pk.projekt.classes.user.User;
+import com.pk.projekt.classes.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

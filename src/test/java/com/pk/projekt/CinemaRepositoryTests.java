@@ -1,9 +1,9 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.Cinema;
-import com.pk.projekt.classes.CinemaRepository;
-import com.pk.projekt.classes.Snack;
-import com.pk.projekt.classes.SnackRepository;
+import com.pk.projekt.classes.cinema.Cinema;
+import com.pk.projekt.classes.cinema.CinemaRepository;
+import com.pk.projekt.classes.snack.Snack;
+import com.pk.projekt.classes.snack.SnackRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
