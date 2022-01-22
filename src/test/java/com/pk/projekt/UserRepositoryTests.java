@@ -1,7 +1,7 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.user.User;
-import com.pk.projekt.classes.user.UserRepository;
+import com.pk.projekt.user.User;
+import com.pk.projekt.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

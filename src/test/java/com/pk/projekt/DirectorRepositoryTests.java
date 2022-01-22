@@ -1,8 +1,8 @@
 package com.pk.projekt;
 
 
-import com.pk.projekt.classes.director.Director;
-import com.pk.projekt.classes.director.DirectorRepository;
+import com.pk.projekt.director.Director;
+import com.pk.projekt.director.DirectorRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

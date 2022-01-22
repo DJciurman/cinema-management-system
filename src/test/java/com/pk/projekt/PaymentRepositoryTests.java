@@ -1,7 +1,7 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.payment.Payment;
-import com.pk.projekt.classes.payment.PaymentRepository;
+import com.pk.projekt.payment.Payment;
+import com.pk.projekt.payment.PaymentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

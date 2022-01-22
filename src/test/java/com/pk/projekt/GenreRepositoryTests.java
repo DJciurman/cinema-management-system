@@ -1,7 +1,7 @@
 package com.pk.projekt;
 
-import com.pk.projekt.classes.genre.Genre;
-import com.pk.projekt.classes.genre.GenreRepository;
+import com.pk.projekt.genre.Genre;
+import com.pk.projekt.genre.GenreRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
