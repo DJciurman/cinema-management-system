@@ -60,9 +60,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        .logoutSuccessUrl("/")
 //        .permitAll();
     http.csrf().disable();
-    http.authorizeRequests().antMatchers("/").permitAll()
+    http.authorizeRequests().antMatchers("/", "/login").permitAll()
 //            .antMatchers("/index", "/garden", "/employee", "/plant", "/task", "/account", "/addNote", "/addGarden", "/addTask", "/addPlant").authenticated()
-            .and().formLogin().loginPage("/login").usernameParameter("name").defaultSuccessUrl("/main-page").permitAll()
+            .and().formLogin().loginPage("/login").usernameParameter("name").defaultSuccessUrl("/main-page").failureUrl("/movies-list").permitAll()
             .and().logout().logoutSuccessUrl("/").permitAll();
   }
 }
