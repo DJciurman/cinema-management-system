@@ -36,6 +36,9 @@ public class Seance {
   @Column(length = 11, name = "nr_sali")
   private int roomNumber;
 
+  @Column(length = 11, name = "cena")
+  private int price;
+
   @OneToMany(mappedBy = "seance", targetEntity = Order.class, cascade = CascadeType.ALL)
   private Set<Order> order;
 
@@ -84,5 +87,13 @@ public class Seance {
 
   public int getRoomNumber() {
     return roomNumber;
+  }
+
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
   }
 }
