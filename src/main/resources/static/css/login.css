@@ -1,0 +1,172 @@
+ .u-section-1 {
+  background-image: linear-gradient(to right, #292870, #db7430);
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 500px;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 7px auto 0;
+}
+
+.u-section-1 .u-form-1 {
+  height: 403px;
+  width: 570px;
+  margin: 7px auto 0;
+}
+
+.u-section-1 .u-form-group-1 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-1 {
+  font-size: 1.5rem;
+}
+
+.u-section-1 .u-input-1 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-2 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-2 {
+  font-size: 1.5rem;
+}
+
+.u-section-1 .u-input-2 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-1 .u-text-2 {
+  font-weight: 400;
+  margin: 30px auto 60px;
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+} .u-section-2 {
+  background-image: linear-gradient(to right, #292870, #db7430);
+}
+
+.u-section-2 .u-sheet-1 {
+  min-height: 680px;
+}
+
+.u-section-2 .u-text-1 {
+  margin: 89px auto 0;
+}
+
+.u-section-2 .u-form-1 {
+  height: 403px;
+  width: 570px;
+  margin: 7px auto 0;
+}
+
+.u-section-2 .u-form-group-1 {
+  margin-left: 0;
+}
+
+.u-section-2 .u-label-1 {
+  font-size: 1.5rem;
+}
+
+.u-section-2 .u-input-1 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-2 .u-form-group-2 {
+  margin-left: 0;
+}
+
+.u-section-2 .u-label-2 {
+  font-size: 1.5rem;
+}
+
+.u-section-2 .u-input-2 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-2 .u-form-group-3 {
+  margin-left: 0;
+}
+
+.u-section-2 .u-label-3 {
+  font-size: 1.5rem;
+}
+
+.u-section-2 .u-input-3 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-2 .u-form-group-4 {
+  margin-left: 0;
+}
+
+.u-section-2 .u-label-4 {
+  font-size: 1.5rem;
+}
+
+.u-section-2 .u-input-4 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-2 .u-form-group-5 {
+  margin-left: 0;
+}
+
+.u-section-2 .u-label-5 {
+  font-size: 1.5rem;
+}
+
+.u-section-2 .u-input-5 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-2 .u-form-group-6 {
+  margin-left: 0;
+}
+
+.u-section-2 .u-label-6 {
+  font-size: 1.5rem;
+}
+
+.u-section-2 .u-input-6 {
+  font-size: 1.125rem;
+  background-image: none;
+}
+
+.u-section-2 .u-text-2 {
+  font-weight: 400;
+  text-align: start;
+  margin: 39px auto 60px;
+}
+
+@media (max-width: 767px) {
+  .u-section-2 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-form-1 {
+    width: 340px;
+  }
+}
