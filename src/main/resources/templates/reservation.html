@@ -7,11 +7,11 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>reservation</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
-<link rel="stylesheet" href="css/reservation.css" media="screen">
-    <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="js/seats.js" defer=""></script>
+    <link rel="stylesheet" href="/css/nicepage.css" media="screen">
+<link rel="stylesheet" href="/css/reservation.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/seats.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.3.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
@@ -29,7 +29,7 @@
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-palette-1-base u-header" id="sec-a997"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="200" title="Strona główna">
-          <img src="images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png" class="u-logo-image u-logo-image-1">
+          <img src="/images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png" class="u-logo-image u-logo-image-1">
         </a><span class="u-icon u-icon-rectangle u-text-black u-icon-1" data-href="/login"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 55 55" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c5d7"></use></svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-c5d7" style="enable-background:new 0 0 55 55;"><path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
 	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
 	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
@@ -58,45 +58,29 @@
       </div></header>
     <section class="u-clearfix u-gradient u-section-1" id="sec-ec55">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h4 class="u-text u-text-default u-text-1">
-          <span style="font-weight: normal;">Wybrany film:</span> Tytuł filmu
+        <h4 class="u-text u-text-default u-text-1" th:text="${movie.name}">
+          <span style="font-weight: normal;">Wybrany film:</span>
         </h4>
         <div class="u-form u-form-1">
-          <form action="#" method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-26 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 36px;" redirect="true">
+          <!--Aby po strzale POST było przekierowanie na stronę trzeba dodać do form klasę "u-form-custom-backend"-->
+          <form th:action="${{'/reservation/' + movie.id}}" method="POST" class="u-clearfix  u-form-spacing-26 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 36px;" redirect="false">
             <div class="u-form-group u-form-radiobutton u-label-top u-form-group-1">
               <div class="u-form-radio-button-wrapper">
-                <input type="radio" name="transaction-type" value="Rezerwacja" required="required">
+                <input type="radio" name="transactionType" value="Rezerwacja" required="required">
                 <label class="u-custom-font u-font-oswald u-label u-label-1" for="radiobutton">Rezerwacja</label>
                 <br>
-                <input type="radio" name="transaction-type" value="Zakup" required="required">
+                <input type="radio" name="transactionType" value="Zakup" required="required">
                 <label class="u-custom-font u-font-oswald u-label u-label-2" for="radiobutton">Zakup</label>
                 <br>
               </div>
-            </div>
-            <div class="u-form-group u-form-select u-label-top u-form-group-2">
-              <label for="select-f79b" class="u-custom-font u-font-oswald u-label u-label-3">Wybierz kino</label>
-              <div class="u-form-select-wrapper">
-                <select id="select-f79b" name="cinema" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-1" required="required">
-                  <option value="Wałbrzych">Wałbrzych</option>
-                  <option value="Świebodzin">Świebodzin</option>
-                  <option value="Łysobyki Dolne">Łysobyki Dolne</option>
-                  <option value="Myślenice">Myślenice</option>
-                </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
-              </div>
-            </div>
-            <div class="u-form-date u-form-group u-label-top u-form-group-3">
-              <label for="date-17d3" class="u-custom-font u-font-oswald u-label u-label-4">Wybierz datę</label>
-              <input type="date" placeholder="MM/DD/YYYY" id="date-17d3" name="date" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-2" required="">
             </div>
             <div class="u-form-group u-form-select u-label-top u-form-group-4">
               <label for="select-b822" class="u-custom-font u-font-oswald u-label u-label-5">Wybierz seans</label>
               <div class="u-form-select-wrapper">
                 <select id="select-b822" name="seance" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-3" required="required">
-                  <option value="10:00">10:00</option>
-                  <option value="13:30">13:30</option>
-                  <option value="18:45">18:45</option>
-                  <option value="21:00">21:00</option>
+                  <div th:each="seance : ${movie.seance}">
+                    <option th:value="${seance.id}" th:text="${seance.time + ', ' + seance.date + ', ' + seance.cinema.city}"></option>
+                  </div>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
               </div>
@@ -172,6 +156,8 @@
             </p>
 
             <input id="price" hidden value="16.0">
+            <input name="seats" id="selected-seats" hidden>
+            <input name="price" id="total-price" hidden>
 
             <p class="u-custom-font u-font-oswald u-label u-label-7">
               Przy zakupie biletów istnieje możliwość zamówienia przekąsek które zostaną przygotowane przed seansem. Czy chcesz zamówić przekąski?
@@ -186,10 +172,10 @@
                 <br>
               </div>
             </div>
-            <div class="u-form-group u-form-select u-label-top u-form-group-8">
-              <label for="select-9be5" class="u-custom-font u-font-oswald u-label u-label-10">Przekąska nr 1</label>
+            <div th:each="snack : ${movie.seance[0].cinema.snack}" class="u-form-group u-form-select u-label-top u-form-group-8">
+              <label th:text="${snack.name}" for="select-9be5" class="u-custom-font u-font-oswald u-label u-label-10"></label>
               <div class="u-form-select-wrapper">
-                <select id="select-9be5" name="select" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-5">
+                <select id="select-9be5" th:name="${snack.name}" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-5">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -206,15 +192,12 @@
             </div>
             <div class="u-form-group u-label-top u-form-group-9">
               <label for="text-066a" class="u-custom-font u-font-oswald u-label u-label-11">Podaj numer karty płatniczej</label>
-              <input type="text" id="text-066a" name="credit-card" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-6" required="required" placeholder="XXXXXXXXXXXXXXXX" maxlength="16">
+              <input type="text" id="text-066a" name="creditCard" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-6" required="required" placeholder="XXXXXXXXXXXXXXXX" maxlength="16">
             </div>
             <div class="u-align-center u-form-group u-form-submit u-label-top">
               <input type="submit" value="submit" class="u-form-control-hidden">
-              <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-30">Prześlij</a>
+              <a class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-30">Prześlij</a>
             </div>
-            <div class="u-form-send-message u-form-send-success"> Dziękujemy! Twoja wiadomość została wysłana! </div>
-            <div class="u-form-send-error u-form-send-message"> Przepraszamy, wiadomość nie mogła zostać wysłana. Popraw błędy i spróbuj ponownie. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
       </div>

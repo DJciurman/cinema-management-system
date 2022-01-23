@@ -56,7 +56,6 @@ public class OrderRepositoryTests {
     order.setSeance(seance);
     order.setPayment(payment);
     order.setUser(user);
-    order.getSnack().add(snack);
     order.getSeat().add(seat);
 
     repoOrder.save(order);
