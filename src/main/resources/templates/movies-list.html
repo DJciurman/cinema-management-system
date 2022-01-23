@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
-  <head>
+<html style="font-size: 16px;" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -8,28 +8,42 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>movies-list</title>
     <link rel="stylesheet" href="css/nicepage.css" media="screen">
-<link rel="stylesheet" href="css/movies-list.css" media="screen">
+    <link rel="stylesheet" href="css/movies-list.css" media="screen">
     <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.3.3, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
-    
-    
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
+
+
     <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "cinema_management",
-		"logo": "images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png"
-}</script>
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "cinema_management",
+        "logo": "images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png"
+    }</script>
     <meta name="theme-color" content="#292870">
     <meta property="og:title" content="movies-list">
     <meta property="og:type" content="website">
-  </head>
-  <body class="u-body"><header class="u-clearfix u-header u-palette-1-base u-header" id="sec-a997"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="200" title="Strona główna">
-          <img src="images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png" class="u-logo-image u-logo-image-1">
-        </a><span class="u-icon u-icon-rectangle u-text-black u-icon-1" data-href="/login"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 55 55" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c5d7"></use></svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-c5d7" style="enable-background:new 0 0 55 55;"><path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+</head>
+<body class="u-body">
+<header class="u-clearfix u-header u-palette-1-base u-header" id="sec-a997">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <a href="" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="200"
+           title="Strona główna">
+            <img src="images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png" class="u-logo-image u-logo-image-1">
+        </a><span class="u-icon u-icon-rectangle u-text-black u-icon-1" data-href="/login"><svg class="u-svg-link"
+                                                                                                preserveAspectRatio="xMidYMin slice"
+                                                                                                viewBox="0 0 55 55"
+                                                                                                style=""><use
+            xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c5d7"></use></svg><svg class="u-svg-content"
+                                                                                               viewBox="0 0 55 55"
+                                                                                               x="0px" y="0px"
+                                                                                               id="svg-c5d7"
+                                                                                               style="enable-background:new 0 0 55 55;"><path
+            d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
 	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
 	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
 	c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
@@ -45,104 +59,124 @@
 	s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
 	c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
 	c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"></path></svg></span>
-        <form action="#" method="get" class="u-border-1 u-border-grey-30 u-radius-24 u-search u-search-left u-white u-search-1">
-          <button class="u-search-button" type="submit">
+        <form action="#" method="get"
+              class="u-border-1 u-border-grey-30 u-radius-24 u-search u-search-left u-white u-search-1">
+            <button class="u-search-button" type="submit">
             <span class="u-search-icon u-spacing-10">
-              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-e698"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-e698" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" class="u-svg-content"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path></svg>
+              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"><use
+                      xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-e698"></use></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                   id="svg-e698" x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                   style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" class="u-svg-content"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path></svg>
             </span>
-          </button>
-          <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
+            </button>
+            <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
         </form>
-      </div></header>
-    <section class="u-clearfix u-gradient u-section-1" id="carousel_b200">
-      <div class="u-clearfix u-sheet u-sheet-1">
+    </div>
+</header>
+<section class="u-clearfix u-gradient u-section-1" id="carousel_b200">
+    <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-form u-form-1">
-          <form action="/dupa" method="POST" class="u-clearfix u-form-custom-backend u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom" redirect="true">
-            <div class="u-form-group u-form-select u-label-left u-form-group-1">
-              <label for="select-ed2e" class="u-label u-text-body-alt-color u-label-1">Typ</label>
-              <div class="u-form-select-wrapper">
-                <select id="select-ed2e" name="content-type" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-text-body-alt-color">
-                  <option value="Wszystkie">Wszystkie</option>
-                  <option value="Filmy">Filmy</option>
-                  <option value="Seriale">Seriale</option>
-                </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
-              </div>
-            </div>
-            <div class="u-form-group u-form-select u-label-left u-form-group-2">
-              <label for="select-036d" class="u-label u-text-body-alt-color u-label-2">Gatunek</label>
-              <div class="u-form-select-wrapper">
-                <select id="select-036d" name="genre" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-text-body-alt-color">
-                  <option value="Wszystkie">Wszystkie</option>
-                  <option value="Akcja">Akcja</option>
-                  <option value="Komedia">Komedia</option>
-                  <option value="Romans">Romans</option>
-                </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
-              </div>
-            </div>
-            <div class="u-form-group u-form-submit u-label-left">
-              <label class="u-label u-text-body-alt-color u-label-3"></label>
-              <div class="u-btn-submit-container">
-                <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-17">Submit</a>
-              </div>
-              <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success"></div>
-            <div class="u-form-send-error u-form-send-message"></div>
-            <input type="hidden" value="" name="recaptchaResponse">
-          </form>
+            <form action="/dupa" method="POST"
+                  class="u-clearfix u-form-custom-backend u-form-horizontal u-form-spacing-15 u-inner-form"
+                  style="padding: 15px;" source="custom" redirect="true">
+                <div class="u-form-group u-form-select u-label-left u-form-group-1">
+                    <label for="select-ed2e" class="u-label u-text-body-alt-color u-label-1">Typ</label>
+                    <div class="u-form-select-wrapper">
+                        <select id="select-ed2e" name="content-type"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-text-body-alt-color">
+                            <option value="Wszystkie">Wszystkie</option>
+                            <option value="Filmy">Filmy</option>
+                            <option value="Seriale">Seriale</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="u-form-group u-form-select u-label-left u-form-group-2">
+                    <label for="select-036d" class="u-label u-text-body-alt-color u-label-2">Gatunek</label>
+                    <div class="u-form-select-wrapper">
+                        <select id="select-036d" name="genre"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-text-body-alt-color">
+                            <option value="Wszystkie">Wszystkie</option>
+                            <option value="Akcja">Akcja</option>
+                            <option value="Komedia">Komedia</option>
+                            <option value="Romans">Romans</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
+                            <path fill="currentColor" d="M4 8L0 4h8z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="u-form-group u-form-submit u-label-left">
+                    <label class="u-label u-text-body-alt-color u-label-3"></label>
+                    <div class="u-btn-submit-container">
+                        <a href="#"
+                           class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-17">Submit</a>
+                    </div>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                </div>
+                <div class="u-form-send-message u-form-send-success"></div>
+                <div class="u-form-send-error u-form-send-message"></div>
+                <input type="hidden" value="" name="recaptchaResponse">
+            </form>
         </div>
         <div class="u-table u-table-responsive u-table-1">
-          <table class="u-table-entity u-table-entity-1">
-            <colgroup>
-              <col width="22.27%">
-              <col width="34.17%">
-              <col width="43.56%">
-            </colgroup>
-            <tbody class="u-align-center u-grey-90 u-table-alt-grey-80 u-table-body u-table-body-1">
-              <tr style="height: 265px;">
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-1">plakat 1</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-2">Tytuł 1</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-3">Opis 1</td>
-              </tr>
-              <tr style="height: 265px;">
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-4">plakat 2</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-5">tytuł 2</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-6">opis 2</td>
-              </tr>
-              <tr style="height: 265px;">
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-7">plakat 3</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-8">tytuł 3</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-9">opis 3</td>
-              </tr>
-              <tr style="height: 265px;">
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-10">plakat 4</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-11">tytuł 4</td>
-                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-12">opis 4</td>
-              </tr>
-            </tbody>
-          </table>
+            <table class="u-table-entity u-table-entity-1">
+                <colgroup>
+                    <col width="22.27%">
+                    <col width="34.17%">
+                    <col width="43.56%">
+                </colgroup>
+                <tbody class="u-align-center u-grey-90 u-table-alt-grey-80 u-table-body u-table-body-1">
+                <tr th:if="${#lists.isEmpty(movies)}" style="height: 265px;">
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-5" width="100%">Brak wyników wyszukiwania</td>
+                </tr>
+                <tr th:each="movie : ${movies}" style="height: 265px;">
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-1">plakat 1</td>
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-2" th:text="${movie.name}">Tytuł 1</td>
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-3" th:text="${movie.description}">Opis 1</td>
+                </tr>
+<!--                <tr style="height: 265px;">-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-7">plakat 3</td>-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-8">tytuł 3</td>-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-9">opis 3</td>-->
+<!--                </tr>-->
+<!--                <tr style="height: 265px;">-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-10">plakat 4</td>-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-11">tytuł 4</td>-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-12">opis 4</td>-->
+<!--                </tr>-->
+<!--                <tr style="height: 265px;">-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-10">plakat 4</td>-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-11">tytuł 4</td>-->
+<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-12">opis 4</td>-->
+<!--                </tr>-->
+                </tbody>
+            </table>
         </div>
-      </div>
-    </section>
-    
-    
-    <footer class="u-align-center u-clearfix u-footer u-palette-1-base u-footer" id="sec-6424"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Cinema Mngr software by M. Ciura &amp; J. Chmielewski<br>2022 Cinema Mngr ©
+    </div>
+</section>
+
+
+<footer class="u-align-center u-clearfix u-footer u-palette-1-base u-footer" id="sec-6424">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Cinema Mngr software by M. Ciura &amp; J. Chmielewski<br>2022
+            Cinema Mngr ©
         </p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+    </div>
+</footer>
+<section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
         <span>Website Templates</span>
-      </a>
-      <p class="u-text">
+    </a>
+    <p class="u-text">
         <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
+    </p>
+    <a class="u-link" href="" target="_blank">
         <span>Website Builder Software</span>
-      </a>. 
-    </section>
-  </body>
+    </a>.
+</section>
+</body>
 </html>
