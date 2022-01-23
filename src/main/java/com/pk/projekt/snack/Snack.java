@@ -2,6 +2,7 @@ package com.pk.projekt.snack;
 
 import com.pk.projekt.cinema.Cinema;
 import com.pk.projekt.order.Order;
+import com.pk.projekt.orderSnack.OrderSnack;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,8 +31,8 @@ public class Snack {
   @ManyToMany(mappedBy = "snack", targetEntity = Cinema.class, cascade = CascadeType.ALL)
   private Set<Cinema> cinema;
 
-  @ManyToMany(mappedBy = "snack", targetEntity = Order.class, cascade = CascadeType.ALL)
-  private Set<Order> order;
+  @OneToMany(mappedBy = "snack", targetEntity = OrderSnack.class, cascade = CascadeType.ALL)
+  private Set<OrderSnack> orderSnack;
 
   public int getId() {
     return id;
@@ -73,8 +74,7 @@ public class Snack {
     return cinema;
   }
 
-  public Set<Order> getOrder() {
-    return order;
+  public Set<OrderSnack> getOrderSnack() {
+    return orderSnack;
   }
-
 }

@@ -1,5 +1,6 @@
 package com.pk.projekt.order;
 
+import com.pk.projekt.orderSnack.OrderSnack;
 import com.pk.projekt.payment.Payment;
 import com.pk.projekt.seance.Seance;
 import com.pk.projekt.seat.Seat;
@@ -39,17 +40,11 @@ public class Order {
   joinColumns = {
           @JoinColumn(name = "zamowienie_id", referencedColumnName = "id", nullable = false, updatable = false)},
           inverseJoinColumns = {
-          @JoinColumn(name = "miejse_rzad", referencedColumnName = "rzad", nullable = false, updatable = false),
-                  @JoinColumn(name = "miejsce_kolumna", referencedColumnName = "kolumna", nullable = false, updatable = false)})
+          @JoinColumn(name = "miejse_id", referencedColumnName = "id", nullable = false, updatable = false)})
   private Set<Seat> seat = new HashSet<>();
 
-  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-  @JoinTable(name = "przekaska_zamowienie",
-  joinColumns = {
-          @JoinColumn(name = "zamowienie_id", referencedColumnName = "id", nullable = false, updatable = false)},
-          inverseJoinColumns = {
-          @JoinColumn(name = "przekaska_id", referencedColumnName = "id", nullable = false, updatable = false)})
-  private Set<Snack> snack = new HashSet<>();
+  @OneToMany(mappedBy = "order", targetEntity = OrderSnack.class, cascade = CascadeType.ALL)
+  private Set<OrderSnack> orderSnack;
 
   public int getId() {
     return id;
@@ -91,8 +86,7 @@ public class Order {
     return seat;
   }
 
-  public Set<Snack> getSnack() {
-    return snack;
+  public Set<OrderSnack> getOrderSnack() {
+    return orderSnack;
   }
-
 }

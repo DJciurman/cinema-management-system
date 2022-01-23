@@ -64,11 +64,11 @@ public class Movie {
     this.description = description;
   }
 
-  public void setWytwornia(Studio studio) {
+  public void setStudio(Studio studio) {
     this.studio = studio;
   }
 
-  public void setRezyser(Director director) {
+  public void setDirector(Director director) {
     this.director = director;
   }
 

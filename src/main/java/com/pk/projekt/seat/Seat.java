@@ -7,14 +7,16 @@ import java.util.Set;
 
 @Entity
 @Table(name = "miejsce")
-@IdClass(SeatId.class)
 public class Seat {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(length = 11, name = "id")
+  private int id;
+
   @Column(nullable = false, length = 11, name = "rzad")
   private int row;
 
-  @Id
   @Column(nullable = false, length = 11, name = "kolumna")
   private int column;
 
@@ -41,4 +43,7 @@ public class Seat {
     return order;
   }
 
+  public int getId() {
+    return id;
+  }
 }

@@ -47,11 +47,11 @@ public class MovieRepositoryTests {
 
     Director director = repoDirector.findDirectorById(1);
 
-    movie.setRezyser(director);
+    movie.setDirector(director);
 
     Studio studio = repoStudio.findStudioById(1);
 
-    movie.setWytwornia(studio);
+    movie.setStudio(studio);
 
     Actor actor = repoActor.findActorById(1);
 
