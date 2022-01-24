@@ -8,6 +8,7 @@ import com.pk.projekt.snack.Snack;
 import com.pk.projekt.user.User;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,6 +46,12 @@ public class Order {
 
   @OneToMany(mappedBy = "order", targetEntity = OrderSnack.class, cascade = CascadeType.ALL)
   private Set<OrderSnack> orderSnack;
+
+  @Column(length = 11, name = "kwota", nullable = false)
+  private int total;
+
+  @Column(length = 11, name = "data", nullable = false)
+  private Date date;
 
   public int getId() {
     return id;
@@ -92,5 +99,21 @@ public class Order {
 
   public void setSeat(Set<Seat> seats){
     this.seat = seats;
+  }
+
+  public int getTotal() {
+    return total;
+  }
+
+  public void setTotal(int total) {
+    this.total = total;
+  }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
   }
 }
