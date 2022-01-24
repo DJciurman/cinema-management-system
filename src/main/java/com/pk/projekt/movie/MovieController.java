@@ -18,8 +18,14 @@ public class MovieController {
 
   @GetMapping("/movie/{id}")
   private String loadPage(Model model, @PathVariable String id){
-    model.addAttribute("movie", movieRepository.findMovieById(Integer.parseInt(id)));
-    model.addAttribute("comments", commentRepository.findCommentsByMovieId(Integer.parseInt(id)));
+    Movie movie = movieRepository.findMovieById(Integer.parseInt(id));
+    model.addAttribute("movie", movie);
+
+    try{
+      model.addAttribute("comments", commentRepository.findCommentsByMovieId(Integer.parseInt(id)));
+    }catch(NullPointerException e){
+
+    }
     return "single-movie";
   }
 }

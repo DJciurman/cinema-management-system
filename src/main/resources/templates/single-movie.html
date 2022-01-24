@@ -7,10 +7,11 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>single-movie</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
-<link rel="stylesheet" href="css/single-movie.css" media="screen">
-    <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="/css/nicepage.css" media="screen">
+<link rel="stylesheet" href="/css/single-movie.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/refresh.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.3.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
@@ -29,7 +30,7 @@
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-palette-1-base u-header" id="sec-a997"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="200" title="Strona główna">
-          <img src="images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png" class="u-logo-image u-logo-image-1">
+          <img src="/images/8c4d35808b274117853d7db570db2d7b-removebg-preview.png" class="u-logo-image u-logo-image-1">
         </a><span class="u-icon u-icon-rectangle u-text-black u-icon-1" data-href="/login"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 55 55" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c5d7"></use></svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-c5d7" style="enable-background:new 0 0 55 55;"><path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
 	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
 	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
@@ -62,15 +63,15 @@
       </div></header>
     <section class="u-clearfix u-gradient u-section-1" id="sec-d8fc">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <img class="u-border-5 u-border-black u-image u-image-round u-radius-10 u-image-1" src="images/wp4770368-avengers-poster-wallpapers.jpg" alt="" data-image-width="1080" data-image-height="1600">
+        <img class="u-border-5 u-border-black u-image u-image-round u-radius-10 u-image-1" th:src="${'/images/' + movie.id + '.jpg'}" alt="" data-image-width="1080" data-image-height="1600">
         <h4 th:text="${movie.name}" class="u-text u-text-default u-text-1"></h4>
-        <h5 class="u-custom-font u-font-oswald u-text u-text-2">Reżyseria: <span th:text="${movie.director}" style="font-weight: 700;"></span>
+        <h5 class="u-custom-font u-font-oswald u-text u-text-2">Reżyseria: <span th:text="${movie.director.firstName + ' ' + movie.director.lastName}" style="font-weight: 700;"></span>
         </h5>
-        <h5 class="u-custom-font u-font-oswald u-text u-text-3">Obsada: <span th:text="${movie.actor}" style="font-weight: 700;"></span>
+        <h5 class="u-custom-font u-font-oswald u-text u-text-3">Obsada: <div th:each="actor : ${movie.actor}"><span th:text="${actor.firstName + ' ' + actor.lastName + '   '}" style="font-weight: 700;"></span></div>
         </h5>
-        <!--<h5 class="u-custom-font u-font-oswald u-text u-text-4">Rok: <b th:text="${movie.year}"></b>-->
+        <h5 class="u-custom-font u-font-oswald u-text u-text-4">Rok: <b th:text="${movie.year}"></b>
         </h5>
-        <!--<h5 class="u-custom-font u-font-oswald u-text u-text-5">Ocena: <b th:text="${movie.mark}"></b>-->
+        <h5 class="u-custom-font u-font-oswald u-text u-text-5">Ocena: <b th:text="${movie.mark}"></b>
         </h5>
         <a th:href="${'/reservation/' + movie.id}" class="u-btn u-btn-round u-button-style u-custom-font u-font-oswald u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">KUP BILET</a>
       </div>
@@ -84,27 +85,19 @@
               <col width="81.54%">
             </colgroup>
             <tbody class="u-table-body">
-              <tr style="height: 100px;">
+              <tr th:each="comment : ${comments}" style="height: 100px;">
                 <td class="u-align-center u-border-3 u-border-white u-custom-font u-font-oswald u-grey-80 u-table-cell u-table-valign-middle u-table-cell-1">
-                  <span style="font-weight: 700;">username</span>
+                  <span th:text="${comment.user.name}" style="font-weight: 700;"></span>
                   <br>
-                  <span class="u-text-palette-3-base">3/5</span>
+                  <span th:text="${comment.mark + '/5'}" class="u-text-palette-3-base"></span>
                 </td>
-                <td class="u-align-left u-border-3 u-border-white u-custom-font u-font-oswald u-grey-80 u-table-cell u-table-valign-middle u-table-cell-2">Polecam serdecznie ten film, smiałem się tak że mnie wyprosili z kina!</td>
-              </tr>
-              <tr style="height: 100px;">
-                <td class="u-align-center u-border-3 u-border-white u-custom-font u-font-oswald u-grey-80 u-table-cell u-table-valign-middle u-table-cell-3">
-                  <span style="font-weight: 700;">username2</span>
-                  <br>
-                  <span class="u-text-palette-3-base">1/5</span>
-                </td>
-                <td class="u-align-left u-border-3 u-border-white u-custom-font u-font-oswald u-grey-80 u-table-cell u-table-valign-middle u-table-cell-4">Słaby film, myślałem że Ironman nie umrze</td>
+                <td th:text="${comment.description}" class="u-align-left u-border-3 u-border-white u-custom-font u-font-oswald u-grey-80 u-table-cell u-table-valign-middle u-table-cell-2"></td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="u-form u-form-1">
-          <form th:action="/comment" method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;" redirect="true">
+          <form th:action="@{/comment}" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;" redirect="true">
             <div class="u-form-group u-form-select u-label-top u-form-group-1">
               <label for="select-1762" class="u-custom-font u-font-oswald u-label u-label-1">Ocena</label>
               <div class="u-form-select-wrapper">
@@ -123,16 +116,13 @@
               <textarea placeholder="Wpisz swój komentarz" rows="4" cols="50" id="message-7246" name="comment" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-2" required=""></textarea>
             </div>
             <div>
-              <input type="text" th:value="">
+              <input hidden type="text" name="movieId" th:value="${movie.id}">
             </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-30">Skomentuj<br>
               </a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
-            <div class="u-form-send-message u-form-send-success"> Dziękujemy! Twoja wiadomość została wysłana! </div>
-            <div class="u-form-send-error u-form-send-message"> Przepraszamy, wiadomość nie mogła zostać wysłana. Popraw błędy i spróbuj ponownie. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
       </div>

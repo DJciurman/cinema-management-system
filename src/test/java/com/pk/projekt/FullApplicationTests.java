@@ -104,6 +104,18 @@ public class FullApplicationTests {
     actor.setLastName("Gustin");
     repoActor.save(actor);
 
+    User user = new User();
+    user.setPassword("admin");
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    String encodedPassword = encoder.encode(user.getPassword());
+    user.setPassword(encodedPassword);
+    user.setName("admin");
+    user.setFirstName("Jan");
+    user.setLastName("Niezbędny");
+    user.setEmail("politechnika@pk.pl");
+    user.setPhoneNumber(639672549);
+    repoUser.save(user);
+
     Director director = new Director();
 
     director.setFirstName("Andreas");
@@ -132,6 +144,7 @@ public class FullApplicationTests {
     movie.setDirector(director);
     movie.setStudio(studio);
     movie.getActor().add(actor);
+    movie.setYear(2005);
     repoMovie.save(movie);
 
     Comment comment = new Comment();
@@ -139,6 +152,7 @@ public class FullApplicationTests {
     comment.setDescription("Ciekawa fabuła");
     comment.setMark(5);
     comment.setMovie(movie);
+    comment.setUser(user);
     repoComment.save(comment);
 
     Snack snack = new Snack();
@@ -174,17 +188,6 @@ public class FullApplicationTests {
     employee.setCinema(cinema);
     repoEmployee.save(employee);
 
-    User user = new User();
-    user.setPassword("admin");
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    String encodedPassword = encoder.encode(user.getPassword());
-    user.setPassword(encodedPassword);
-    user.setName("admin");
-    user.setFirstName("Jan");
-    user.setLastName("Niezbędny");
-    user.setEmail("politechnika@pk.pl");
-    user.setPhoneNumber(639672549);
-    repoUser.save(user);
 
     Reservation reservation = new Reservation();
 

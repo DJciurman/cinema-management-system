@@ -1,7 +1,12 @@
 package com.pk.projekt.comment;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class CommentRequest {
-  String mark;
+  Integer mark;
   String comment;
-  String movieId;
+  Integer movieId;
 }
