@@ -12,4 +12,8 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
   @Query("SELECT c FROM Comment c WHERE c.id = ?1")
   Comment findCommentById(int id);
+
+  //TODO: Stworzyć query do szukania komentarzy po id filmu
+  @Query("")
+  Comment findCommentsByMovieId(Integer id);
 }

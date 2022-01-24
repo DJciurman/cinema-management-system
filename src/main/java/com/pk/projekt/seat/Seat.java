@@ -23,6 +23,12 @@ public class Seat {
   @ManyToMany(mappedBy = "seat", targetEntity = Order.class, cascade = CascadeType.ALL)
   private Set<Order> order;
 
+  public Seat(Integer number){
+    this.row = number;
+  }
+
+  public Seat(){}
+
   public int getRow() {
     return row;
   }

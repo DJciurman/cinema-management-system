@@ -59,16 +59,16 @@
     <section class="u-clearfix u-gradient u-section-1" id="sec-d8fc">
       <div class="u-clearfix u-sheet u-sheet-1">
         <img class="u-border-5 u-border-black u-image u-image-round u-radius-10 u-image-1" src="images/wp4770368-avengers-poster-wallpapers.jpg" alt="" data-image-width="1080" data-image-height="1600">
-        <h4 class="u-text u-text-default u-text-1">Avengers: Koniec gry</h4>
-        <h5 class="u-custom-font u-font-oswald u-text u-text-2">Reżyseria: <span style="font-weight: 700;">Joe Russo</span>
+        <h4 th:text="${movie.name}" class="u-text u-text-default u-text-1"></h4>
+        <h5 class="u-custom-font u-font-oswald u-text u-text-2">Reżyseria: <span th:text="${movie.director}" style="font-weight: 700;"></span>
         </h5>
-        <h5 class="u-custom-font u-font-oswald u-text u-text-3">Obsada: <span style="font-weight: 700;">Robert Downey Jr, Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner, Don Cheadle</span>
+        <h5 class="u-custom-font u-font-oswald u-text u-text-3">Obsada: <span th:text="${movie.actor}" style="font-weight: 700;"></span>
         </h5>
-        <h5 class="u-custom-font u-font-oswald u-text u-text-4">Rok: <b>2019</b>
+        <!--<h5 class="u-custom-font u-font-oswald u-text u-text-4">Rok: <b th:text="${movie.year}"></b>-->
         </h5>
-        <h5 class="u-custom-font u-font-oswald u-text u-text-5">Ocena: <b>4.5/5</b>
+        <!--<h5 class="u-custom-font u-font-oswald u-text u-text-5">Ocena: <b th:text="${movie.mark}"></b>-->
         </h5>
-        <a href="reservation/id" class="u-btn u-btn-round u-button-style u-custom-font u-font-oswald u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">KUP BILET</a>
+        <a th:href="${'/reservation/' + movie.id}" class="u-btn u-btn-round u-button-style u-custom-font u-font-oswald u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">KUP BILET</a>
       </div>
     </section>
     <section class="u-clearfix u-gradient u-section-2" id="sec-a1d9">
@@ -100,7 +100,7 @@
           </table>
         </div>
         <div class="u-form u-form-1">
-          <form action="/refresh" method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;" redirect="true">
+          <form th:action="/comment" method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;" redirect="true">
             <div class="u-form-group u-form-select u-label-top u-form-group-1">
               <label for="select-1762" class="u-custom-font u-font-oswald u-label u-label-1">Ocena</label>
               <div class="u-form-select-wrapper">
@@ -117,6 +117,9 @@
             <div class="u-form-group u-form-message">
               <label for="message-7246" class="u-form-control-hidden u-label"></label>
               <textarea placeholder="Wpisz swój komentarz" rows="4" cols="50" id="message-7246" name="comment" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-2" required=""></textarea>
+            </div>
+            <div>
+              <input type="text" th:value="">
             </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-30">Skomentuj<br>

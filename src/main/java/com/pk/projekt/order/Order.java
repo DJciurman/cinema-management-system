@@ -40,7 +40,7 @@ public class Order {
   joinColumns = {
           @JoinColumn(name = "zamowienie_id", referencedColumnName = "id", nullable = false, updatable = false)},
           inverseJoinColumns = {
-          @JoinColumn(name = "miejse_id", referencedColumnName = "id", nullable = false, updatable = false)})
+          @JoinColumn(name = "miejse_id", referencedColumnName = "id", nullable = false, updatable = false)}) //literówka?
   private Set<Seat> seat = new HashSet<>();
 
   @OneToMany(mappedBy = "order", targetEntity = OrderSnack.class, cascade = CascadeType.ALL)
@@ -88,5 +88,9 @@ public class Order {
 
   public Set<OrderSnack> getOrderSnack() {
     return orderSnack;
+  }
+
+  public void setSeat(Set<Seat> seats){
+    this.seat = seats;
   }
 }
