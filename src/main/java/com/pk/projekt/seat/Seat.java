@@ -1,6 +1,7 @@
 package com.pk.projekt.seat;
 
 import com.pk.projekt.order.Order;
+import com.pk.projekt.reservation.Reservation;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -22,6 +23,9 @@ public class Seat {
 
   @ManyToMany(mappedBy = "seat", targetEntity = Order.class, cascade = CascadeType.ALL)
   private Set<Order> order;
+
+  @ManyToMany(mappedBy = "seat", targetEntity = Reservation.class, cascade = CascadeType.ALL)
+  private Set<Reservation> reservation;
 
   public Seat(Integer number){
     this.row = number;
@@ -51,5 +55,9 @@ public class Seat {
 
   public int getId() {
     return id;
+  }
+
+  public Set<Reservation> getReservation() {
+    return reservation;
   }
 }

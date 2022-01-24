@@ -1,6 +1,7 @@
 package com.pk.projekt.comment;
 
 import com.pk.projekt.movie.Movie;
+import com.pk.projekt.user.User;
 
 import javax.persistence.*;
 
@@ -22,6 +23,10 @@ public class Comment {
   @ManyToOne
   @JoinColumn(name = "film_id", nullable = false)
   private Movie movie;
+
+  @ManyToOne
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
 
   public void setDescription(String description) {
     this.description = description;
@@ -49,5 +54,13 @@ public class Comment {
 
   public Movie getMovie() {
     return movie;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

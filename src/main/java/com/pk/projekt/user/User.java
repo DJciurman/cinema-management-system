@@ -1,5 +1,6 @@
 package com.pk.projekt.user;
 
+import com.pk.projekt.comment.Comment;
 import com.pk.projekt.order.Order;
 import com.pk.projekt.reservation.Reservation;
 
@@ -38,6 +39,9 @@ public class User {
 
   @OneToMany(mappedBy = "user", targetEntity = Reservation.class, cascade = CascadeType.ALL)
   private Set<Reservation> reservation;
+
+  @OneToMany(mappedBy = "user", targetEntity = Comment.class, cascade = CascadeType.ALL)
+  private Set<Comment> comment;
 
   public int getId() {
     return id;
@@ -99,4 +103,7 @@ public class User {
     return reservation;
   }
 
+  public Set<Comment> getComment() {
+    return comment;
+  }
 }

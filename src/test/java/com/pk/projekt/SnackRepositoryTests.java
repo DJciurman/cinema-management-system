@@ -21,11 +21,42 @@ public class SnackRepositoryTests {
   public void testAddSnack() {
     Snack snack = new Snack();
 
-    snack.setName("Naczosy");
+    snack.setName("Lejsy");
     snack.setDescription("Kukurydziane trójkąty");
     snack.setPrice(12.00F);
     snack.setAmount(100);
+    repoSnack.save(snack);
 
+    snack = new Snack();
+
+    snack.setName("Czipikao");
+    snack.setDescription("Kukurydziane trójkąty");
+    snack.setPrice(12.00F);
+    snack.setAmount(100);
+    repoSnack.save(snack);
+
+    snack = new Snack();
+
+    snack.setName("Popkorn");
+    snack.setDescription("Kukurydziane trójkąty");
+    snack.setPrice(12.00F);
+    snack.setAmount(100);
+    repoSnack.save(snack);
+
+    snack = new Snack();
+
+    snack.setName("Koka-kola");
+    snack.setDescription("Kukurydziane trójkąty");
+    snack.setPrice(12.00F);
+    snack.setAmount(100);
+    repoSnack.save(snack);
+
+    snack = new Snack();
+
+    snack.setName("sewen-ap");
+    snack.setDescription("Kukurydziane trójkąty");
+    snack.setPrice(12.00F);
+    snack.setAmount(100);
     repoSnack.save(snack);
   }
 }

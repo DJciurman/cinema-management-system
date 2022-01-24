@@ -11,6 +11,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
@@ -37,9 +40,18 @@ public class CinemaRepositoryTests {
   public void testModifyCinema() {
     Cinema cinema = repoCinema.findCinemaById(1);
 
-    Snack snack = repoSnack.findSnackById(1);
+    Set<Snack> snacks = new HashSet<>();
+    Snack snack = repoSnack.findSnackById(2);
+    Snack snack1 = repoSnack.findSnackById(3);
+    Snack snack2 = repoSnack.findSnackById(4);
+    Snack snack3 = repoSnack.findSnackById(5);
 
-    cinema.getSnack().add(snack);
+    snacks.add(snack);
+    snacks.add(snack1);
+    snacks.add(snack2);
+    snacks.add(snack3);
+
+    cinema.getSnack().addAll(snacks);
 
     repoCinema.save(cinema);
   }

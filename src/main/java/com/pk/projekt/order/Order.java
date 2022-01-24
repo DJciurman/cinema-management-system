@@ -40,7 +40,7 @@ public class Order {
   joinColumns = {
           @JoinColumn(name = "zamowienie_id", referencedColumnName = "id", nullable = false, updatable = false)},
           inverseJoinColumns = {
-          @JoinColumn(name = "miejse_id", referencedColumnName = "id", nullable = false, updatable = false)}) //literówka?
+          @JoinColumn(name = "miejsce_id", referencedColumnName = "id", nullable = false, updatable = false)}) //literówka?
   private Set<Seat> seat = new HashSet<>();
 
   @OneToMany(mappedBy = "order", targetEntity = OrderSnack.class, cascade = CascadeType.ALL)

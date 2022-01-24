@@ -59,8 +59,8 @@
 	s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
 	c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
 	c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"></path></svg></span>
-        <form action="#" method="get"
-              class="u-border-1 u-border-grey-30 u-radius-24 u-search u-search-left u-white u-search-1">
+        <form th:action="@{/search}" method="get"
+              class="u-form-custom-backend u-border-1 u-border-grey-30 u-radius-24 u-search u-search-left u-white u-search-1" redirect="false">
             <button class="u-search-button" type="submit">
             <span class="u-search-icon u-spacing-10">
               <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"><use
@@ -134,7 +134,7 @@
                     <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-5" width="100%">Brak wyników wyszukiwania</td>
                 </tr>
                 <tr th:each="movie : ${movies}" style="height: 265px;">
-                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-1">plakat 1</td>
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-1"><img height="265px" th:src="${'/images/' + movie.id + '.jpg'}"></td>
                     <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-2" th:text="${movie.name}">Tytuł 1</td>
                     <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-3" th:text="${movie.description}">Opis 1</td>
                 </tr>

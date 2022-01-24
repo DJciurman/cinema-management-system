@@ -34,6 +34,12 @@ public class Movie {
   @JoinColumn(name = "rezyser_id", nullable = false)
   private Director director;
 
+  @Column(length = 11, name = "rok", nullable = false)
+  private int year;
+
+  @Column(length = 11, name = "ocena", nullable = false)
+  private int mark = 0;
+
   @OneToMany(mappedBy = "movie", targetEntity = Comment.class, cascade = CascadeType.ALL)
   private Set<Comment> comment;
 
@@ -106,5 +112,21 @@ public class Movie {
 
   public Set<Seance> getSeance() {
     return seance;
+  }
+
+  public int getYear() {
+    return year;
+  }
+
+  public void setYear(int year) {
+    this.year = year;
+  }
+
+  public int getMark() {
+    return mark;
+  }
+
+  public void setMark(int mark) {
+    this.mark = mark;
   }
 }
