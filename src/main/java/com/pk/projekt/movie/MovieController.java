@@ -28,4 +28,11 @@ public class MovieController {
     }
     return "single-movie";
   }
+
+  @GetMapping("/")
+  private String loadMainPage(Model model){
+    model.addAttribute("movie", movieRepository.findMovieById(1));
+    model.addAttribute("tvSeries", movieRepository.findMovieById(1));
+    return "main-page";
+  }
 }

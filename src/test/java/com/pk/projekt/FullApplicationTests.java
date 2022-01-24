@@ -144,6 +144,7 @@ public class FullApplicationTests {
     movie.setDirector(director);
     movie.setStudio(studio);
     movie.getActor().add(actor);
+    movie.getGenre().add(genre);
     movie.setYear(2005);
     repoMovie.save(movie);
 
