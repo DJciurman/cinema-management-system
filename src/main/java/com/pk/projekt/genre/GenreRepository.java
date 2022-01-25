@@ -26,4 +26,7 @@ public interface GenreRepository extends JpaRepository<Genre, Integer> {
 
   @Query("SELECT g.movie FROM Genre g WHERE g.id = 2")
   Set<Movie> findAllSeries();
+
+  @Query("SELECT g FROM Genre g INNER JOIN g.movie m WHERE m = ?1 ORDER BY g.name ASC")
+  Set<Genre> findAllMovieGenresASC(Movie movie);
 }

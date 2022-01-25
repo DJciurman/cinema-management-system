@@ -1,5 +1,6 @@
 package com.pk.projekt.actor;
 
+import com.pk.projekt.genre.Genre;
 import com.pk.projekt.movie.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,7 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 
   @Query("SELECT a.movie FROM Actor a WHERE a.firstName LIKE %?1% OR a.lastName LIKE %?1%")
   Set<Movie> findMoviesByActorsPattern(String pattern);
+
+  @Query("SELECT a FROM Actor a INNER JOIN a.movie m WHERE m = ?1 ORDER BY a.firstName ASC")
+  Set<Actor> findAllMovieFirstNamesASC(Movie movie);
 }

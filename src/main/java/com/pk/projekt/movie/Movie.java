@@ -133,4 +133,12 @@ public class Movie {
   public void setMark(int mark) {
     this.mark = mark;
   }
+
+  public void setGenre(Set<Genre> genre) {
+    this.genre = genre;
+  }
+
+  public void setActor(Set<Actor> actor) {
+    this.actor = actor;
+  }
 }

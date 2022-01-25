@@ -1,6 +1,9 @@
 package com.pk.projekt.movie;
 
+import com.pk.projekt.actor.Actor;
+import com.pk.projekt.actor.ActorRepository;
 import com.pk.projekt.comment.CommentRepository;
+import com.pk.projekt.genre.Genre;
 import com.pk.projekt.genre.GenreRepository;
 import com.pk.projekt.security.CustomUserDetails;
 import com.pk.projekt.user.UserRepository;
@@ -34,9 +37,18 @@ public class MovieController {
   @Autowired
   private GenreRepository genreRepository;
 
+  @Autowired
+  private ActorRepository actorRepository;
+
   @GetMapping("/movie/{id}")
   private String loadPage(Model model, @PathVariable String id, @AuthenticationPrincipal CustomUserDetails userDetails){
     Movie movie = movieRepository.findMovieById(Integer.parseInt(id));
+    Set<Genre> genres = genreRepository.findAllMovieGenresASC(movie);
+
+    movie.setGenre(genres);
+    Set<Actor> actors = actorRepository.findAllMovieFirstNamesASC(movie);
+    movie.setActor(actors);
+
     model.addAttribute("movie", movie);
     try{
       model.addAttribute("user", userRepository.findUserByName(userDetails.getUsername()));
