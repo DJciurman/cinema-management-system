@@ -35,6 +35,10 @@ function updateSelectedCount() {
 
 // Get data from localstorage and populate UI
 function populateUI() {
+    seats.forEach((seat, index) => {
+        seat.classList.remove("selected", "sold");
+    });
+
     const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
     const soldSeats = JSON.parse(localStorage.getItem("soldSeats"));
 
@@ -90,12 +94,17 @@ $(document).ready(function() {
         localStorage.setItem("soldSeats", document.getElementById(this.value).value);
     });
 
+    $(document.getElementById("select-b822")).change(function () {
+        console.log("select changed");
+        localStorage.setItem("soldSeats", document.getElementById(this.value).value);
+        populateUI();
+    })
+
     var soldSeatsToCompare = localStorage.getItem("soldSeats");
     populateUI();
 
     $('.u-btn-submit').click(function (){
-        console.log("id seansu: " + document.getElementById("select-b822").value);
-        console.log("zajete miejsca: " + document.getElementById(document.getElementById("select-b822").value).value);
+
         // setTimeout(() => {
         //     if(soldSeatsToCompare !== document.getElementById(document.getElementById("select-b822").value).value){
         //         $('.u-inner-form').hide();
