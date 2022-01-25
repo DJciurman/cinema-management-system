@@ -104,13 +104,8 @@ $(document).ready(function() {
     populateUI();
 
     $('.u-btn-submit').click(function (){
-
-        // setTimeout(() => {
-        //     if(soldSeatsToCompare !== document.getElementById(document.getElementById("select-b822").value).value){
-        //         $('.u-inner-form').hide();
-        //         $('.success-message').show();
-        //         console.log("done");
-        //     }
-        // }, 600);
+        setTimeout(() => {
+            location.reload()
+        }, 600);
     });
 });

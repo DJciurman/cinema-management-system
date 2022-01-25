@@ -59,9 +59,13 @@ public class MovieController {
     List<Movie> results = movieRepository.findBestMovie(movies);
     Movie movie = results.get(0);
     model.addAttribute("movie", movie);
+    movie = results.get(1);
+    model.addAttribute("movie2", movie);
     results = movieRepository.findBestMovie(series);
     movie = results.get(0);
     model.addAttribute("tvSeries", movie);
+    movie = results.get(1);
+    model.addAttribute("tvSeries2", movie);
     return "main-page";
   }
 }
