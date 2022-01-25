@@ -39,4 +39,13 @@ public class CommentController {
     return ResponseEntity.status(HttpStatus.CREATED).body("Comment posted");
   }
 
+  @PostMapping("/comment/delete")
+  private ResponseEntity deleteComment(DeleteCommentRequest deleteCommentRequest){
+    try{
+      commentRepository.delete(commentRepository.findCommentById(deleteCommentRequest.getCommentId()));
+    } catch(Exception e){
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to delete comment");
+    }
+    return ResponseEntity.status(HttpStatus.OK).body("Comment deleted");
+  }
 }
