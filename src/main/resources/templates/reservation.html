@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/css/reservation.css" media="screen">
     <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="/js/seats.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/reservationHandler.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.3.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
@@ -70,10 +70,10 @@
           <form th:action="${{'/reservation/' + movie.id}}" method="POST" class="u-clearfix  u-form-spacing-26 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 36px;" redirect="false">
             <div class="u-form-group u-form-radiobutton u-label-top u-form-group-1">
               <div class="u-form-radio-button-wrapper">
-                <input type="radio" name="transactionType" value="Rezerwacja" required="required">
+                <input type="radio" name="transactionType" id="reservation" value="Rezerwacja" required="required">
                 <label class="u-custom-font u-font-oswald u-label u-label-1" for="radiobutton">Rezerwacja</label>
                 <br>
-                <input type="radio" name="transactionType" value="Zakup" required="required">
+                <input type="radio" name="transactionType" id="purchase" value="Zakup" required="required">
                 <label class="u-custom-font u-font-oswald u-label u-label-2" for="radiobutton">Zakup</label>
                 <br>
               </div>
@@ -83,7 +83,8 @@
               <div class="u-form-select-wrapper">
                 <select id="select-b822" name="seance" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-3" required="required">
                   <div th:each="seance : ${movie.seance}">
-                    <option th:value="${seance.id}" th:text="${seance.time + ', ' + seance.date + ', ' + seance.cinema.city}"></option>
+                    <option th:value="${seance.id}"  th:text="${seance.time + ', ' + seance.date + ', ' + seance.cinema.city}"></option>
+                    <param th:id="${seance.id}" th:value="${seance.getSeats()}">
                   </div>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
@@ -163,40 +164,32 @@
             <input name="seats" id="selected-seats" hidden>
             <input name="price" id="total-price" hidden>
 
-            <p class="u-custom-font u-font-oswald u-label u-label-7">
-              Przy zakupie biletów istnieje możliwość zamówienia przekąsek które zostaną przygotowane przed seansem. Czy chcesz zamówić przekąski?
-            </p>
-            <div class="u-form-group u-form-radiobutton u-label-top u-form-group-7">
-              <div class="u-form-radio-button-wrapper">
-                <input type="radio" name="snacks" value="Tak" required="required">
-                <label class="u-custom-font u-font-oswald u-label u-label-8" for="radiobutton">Tak</label>
-                <br>
-                <input type="radio" name="snacks" value="Nie" required="required">
-                <label class="u-custom-font u-font-oswald u-label u-label-9" for="radiobutton">Nie</label>
-                <br>
+            <div class="purchase-only">
+              <p class="u-custom-font u-font-oswald u-label u-label-7">
+                Przy zakupie biletów istnieje możliwość zamówienia przekąsek które zostaną przygotowane przed seansem.
+              </p>
+              <div th:each="snacks : ${movie.seance[0].cinema.snack}" class="u-form-group u-form-select u-label-top u-form-group-8">
+                <label th:text="${snacks.name}" for="select-9be5" class="u-custom-font u-font-oswald u-label u-label-10"></label>
+                <div class="u-form-select-wrapper">
+                  <select id="select-9be5" th:name="${snacks.name}" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-5">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                </div>
               </div>
-            </div>
-            <div th:each="snacks : ${movie.seance[0].cinema.snack}" class="u-form-group u-form-select u-label-top u-form-group-8">
-              <label th:text="${snacks.name}" for="select-9be5" class="u-custom-font u-font-oswald u-label u-label-10"></label>
-              <div class="u-form-select-wrapper">
-                <select id="select-9be5" th:name="${snacks.name}" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-5">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+              <div class="u-form-group u-label-top u-form-group-9">
+                <label for="text-066a" class="u-custom-font u-font-oswald u-label u-label-11">Podaj numer karty płatniczej</label>
+                <input type="text" id="text-066a" name="creditCard" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-6" placeholder="XXXXXXXXXXXXXXXX" maxlength="16">
               </div>
-            </div>
-            <div class="u-form-group u-label-top u-form-group-9">
-              <label for="text-066a" class="u-custom-font u-font-oswald u-label u-label-11">Podaj numer karty płatniczej</label>
-              <input type="text" id="text-066a" name="creditCard" class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-6" required="required" placeholder="XXXXXXXXXXXXXXXX" maxlength="16">
             </div>
             <div class="u-align-center u-form-group u-form-submit u-label-top">
               <input type="submit" value="submit" class="u-form-control-hidden">
