@@ -1,7 +1,7 @@
 package com.pk.projekt.movie;
 
 import com.pk.projekt.comment.CommentRepository;
-import com.pk.projekt.comment.DeleteCommentRequest;
+import com.pk.projekt.genre.GenreRepository;
 import com.pk.projekt.security.CustomUserDetails;
 import com.pk.projekt.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @Controller
 public class MovieController {
@@ -28,6 +30,9 @@ public class MovieController {
 
   @Autowired
   private UserRepository userRepository;
+
+  @Autowired
+  private GenreRepository genreRepository;
 
   @GetMapping("/movie/{id}")
   private String loadPage(Model model, @PathVariable String id, @AuthenticationPrincipal CustomUserDetails userDetails){
@@ -48,11 +53,15 @@ public class MovieController {
   }
 
   @GetMapping("/")
-  private String loadMainPage(Model model){
-    Random rand = new Random();
-    model.addAttribute("movie", movieRepository.findMovieById(7));
-    model.addAttribute("tvSeries", movieRepository.findMovieById(1));
+  private String loadMainPage(Model model) {
+    Set<Movie> movies = genreRepository.findAllMovies();
+    Set<Movie> series = genreRepository.findAllSeries();
+    List<Movie> results = movieRepository.findBestMovie(movies);
+    Movie movie = results.get(0);
+    model.addAttribute("movie", movie);
+    results = movieRepository.findBestMovie(series);
+    movie = results.get(0);
+    model.addAttribute("tvSeries", movie);
     return "main-page";
   }
-
 }

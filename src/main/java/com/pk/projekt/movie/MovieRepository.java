@@ -26,4 +26,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
   @Query("SELECT count(m) FROM Movie m")
   Integer countMovie();
+
+  @Query("SELECT m FROM Movie m WHERE m IN ?1 ORDER BY m.mark DESC")
+  List<Movie> findBestMovie(Set<Movie> movies);
 }

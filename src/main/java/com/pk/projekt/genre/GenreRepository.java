@@ -20,4 +20,10 @@ public interface GenreRepository extends JpaRepository<Genre, Integer> {
 
   @Query("SELECT g.movie FROM Genre g WHERE g.name LIKE %?1%")
   Set<Movie> findMoviesByGenresPattern(String pattern);
+
+  @Query("SELECT g.movie FROM Genre g WHERE g.id = 1")
+  Set<Movie> findAllMovies();
+
+  @Query("SELECT g.movie FROM Genre g WHERE g.id = 2")
+  Set<Movie> findAllSeries();
 }
