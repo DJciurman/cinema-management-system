@@ -217,3 +217,8 @@
     margin-left: 0;
   }
 }
+
+ .cinema-button {
+   margin-right: auto;
+   margin-left: auto;
+ }
