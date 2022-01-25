@@ -4,6 +4,7 @@ import com.pk.projekt.movie.Movie;
 import com.pk.projekt.movie.MovieRepository;
 import com.pk.projekt.comment.Comment;
 import com.pk.projekt.comment.CommentRepository;
+import com.pk.projekt.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -21,6 +22,9 @@ public class CommentRepositoryTests {
 
   @Autowired
   private MovieRepository repoMovie;
+
+  @Autowired
+  private UserRepository repoUser;
 
   @Test
   public void testAddComment() {
@@ -42,9 +46,10 @@ public class CommentRepositoryTests {
   public void testModifyComment() {
 
     Comment comment = repoComment.findCommentById(1);
-    comment.setMark(5);
+    comment.setUser(repoUser.findUserById(1));
 
     repoComment.save(comment);
 
   }
+
 }

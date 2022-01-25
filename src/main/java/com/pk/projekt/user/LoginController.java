@@ -1,6 +1,8 @@
 package com.pk.projekt.user;
 
 import com.pk.projekt.actor.ActorRepository;
+import com.pk.projekt.cinema.Cinema;
+import com.pk.projekt.cinema.CinemaRepository;
 import com.pk.projekt.director.DirectorRepository;
 import com.pk.projekt.genre.GenreRepository;
 import com.pk.projekt.movie.Movie;
@@ -43,6 +45,10 @@ public class LoginController {
 
   @Autowired
   private StudioRepository repoStudio;
+
+  @Autowired
+  private CinemaRepository repoCinema;
+
 
   @GetMapping("/login")
   private String loadPage(Model model) {
@@ -118,6 +124,13 @@ public class LoginController {
     model.addAttribute("movies", movies);
 
     return "movies-list";
+  }
+
+  @GetMapping("/cinemas")
+  private String viewCinemas(Model model) {
+    Set<Cinema> cinemas = repoCinema.findAllCinemasCityASC();
+    model.addAttribute("cinemas", cinemas);
+    return "cinemas-list";
   }
 
 }
