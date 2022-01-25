@@ -23,4 +23,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
   @Query("SELECT m FROM Movie m WHERE m IN ?1 ORDER BY m.name ASC")
   Set<Movie> findMoviesASC(Set<Movie> movies);
+
+  @Query("SELECT count(m) FROM Movie m")
+  Integer countMovie();
 }

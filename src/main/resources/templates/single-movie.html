@@ -71,6 +71,11 @@
         </h5>
         <h5 class="u-custom-font u-font-oswald u-text u-text-4">Rok: <b th:text="${movie.year}"></b>
         </h5>
+        <h5 class="u-custom-font u-font-oswald u-text u-text-5">Gatunek:
+          <div th:each="genre : ${movie.genre}">
+            <b th:text="${genre.name + '  '}"></b>
+          </div>
+        </h5>
         <h5 class="u-custom-font u-font-oswald u-text u-text-5">Ocena: <b th:text="${movie.mark}"></b>
         </h5>
         <a th:href="${'/reservation/' + movie.id}" class="u-btn u-btn-round u-button-style u-custom-font u-font-oswald u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">KUP BILET</a>

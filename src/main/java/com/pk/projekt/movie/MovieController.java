@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Random;
+
 @Controller
 public class MovieController {
 
@@ -31,7 +33,8 @@ public class MovieController {
 
   @GetMapping("/")
   private String loadMainPage(Model model){
-    model.addAttribute("movie", movieRepository.findMovieById(1));
+    Random rand = new Random();
+    model.addAttribute("movie", movieRepository.findMovieById(7));
     model.addAttribute("tvSeries", movieRepository.findMovieById(1));
     return "main-page";
   }
