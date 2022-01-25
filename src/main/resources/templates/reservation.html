@@ -60,11 +60,18 @@
       <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
     </form>
       </div></header>
-    <section class="u-clearfix u-gradient u-section-1" id="sec-ec55">
+    <section class="u-clearfix u-gradient u-section-1" id="sec-ec55" style="min-height: 80vh">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h4 class="u-text u-text-default u-text-1" th:text="${movie.name}">
           <span style="font-weight: normal;">Wybrany film:</span>
         </h4>
+        <h4 class="success-message u-text u-text-default" style="margin-left: auto; margin-right: auto">
+          <span style="font-weight: normal;">Operacja zakończona sukcesem!</span>
+        </h4>
+        <br>
+        <div class="u-align-center return-button">
+          <a th:href="${'/movie/' + movie.id}" class="u-btn u-btn-round u-button-style u-custom-font u-font-oswald u-radius-30" style="margin-right: auto; margin-left: auto">Powrót</a>
+        </div>
         <div class="u-form u-form-1">
           <!--Aby po strzale POST było przekierowanie na stronę trzeba dodać do form klasę "u-form-custom-backend"-->
           <form th:action="${{'/reservation/' + movie.id}}" method="POST" class="u-clearfix  u-form-spacing-26 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 36px;" redirect="false">
@@ -198,7 +205,6 @@
               <a class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-oswald u-radius-30">Prześlij</a>
             </div>
           </form>
-          <h5 class="success-message">Operacja zakończona pomyślnie</h5>
         </div>
       </div>
     </section>

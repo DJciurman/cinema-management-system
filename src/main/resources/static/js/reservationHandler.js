@@ -81,6 +81,14 @@ container.addEventListener("click", (e) => {
 $(document).ready(function() {
     $('.purchase-only').hide();
     $('.success-message').hide();
+    $('.return-button').hide();
+
+    if(localStorage.getItem("success") === "true"){
+        $('.u-form-1').hide();
+        $('.success-message').show();
+        $('.return-button').show();
+        localStorage.setItem("success", "false");
+    }
 
     $(document.getElementById("purchase")).click(function (){
         $('.purchase-only').show();
@@ -105,7 +113,8 @@ $(document).ready(function() {
 
     $('.u-btn-submit').click(function (){
         setTimeout(() => {
-            location.reload()
+            localStorage.setItem("success", "true");
+            location.reload();
         }, 600);
     });
 });
