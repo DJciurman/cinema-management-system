@@ -215,6 +215,8 @@ public class FullApplicationTests {
     order.setPayment(payment);
     order.setUser(user);
     order.getSeat().add(seat);
+    order.setDate(Date.valueOf("2022-02-04"));
+    order.setTotal(56);
     repoOrder.save(order);
 
     OrderSnack orderSnack = new OrderSnack();

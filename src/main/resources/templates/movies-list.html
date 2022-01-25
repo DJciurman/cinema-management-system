@@ -88,25 +88,10 @@
                     <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-5" width="100%">Brak wyników wyszukiwania</td>
                 </tr>
                 <tr th:each="movie : ${movies}" style="height: 265px;">
-                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-1"><a th:href="${'/movie/' + movie.id}"><img height="265px" th:src="${'/images/' + movie.id + '.jpg'}"></a></td>
-                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-2"><a th:text="${movie.name}" th:href="${'/movie/' + movie.id}"></a></td>
-                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-3" th:text="${movie.description}">Opis 1</td>
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-1"><a th:href="${'/movie/' + movie.id}" style="display: block"><img height="265px" th:src="${'/images/' + movie.id + '.jpg'}"></a></td>
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-2"><a th:text="${movie.name}" th:href="${'/movie/' + movie.id}" style="display: block"></a></td>
+                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-3"><a th:text="${movie.description}" th:href="${'/movie/' + movie.id}" style="display: block"></a></td>
                 </tr>
-<!--                <tr style="height: 265px;">-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-7">plakat 3</td>-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-8">tytuł 3</td>-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-9">opis 3</td>-->
-<!--                </tr>-->
-<!--                <tr style="height: 265px;">-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-10">plakat 4</td>-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-11">tytuł 4</td>-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-12">opis 4</td>-->
-<!--                </tr>-->
-<!--                <tr style="height: 265px;">-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-10">plakat 4</td>-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-11">tytuł 4</td>-->
-<!--                    <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-12">opis 4</td>-->
-<!--                </tr>-->
                 </tbody>
             </table>
         </div>

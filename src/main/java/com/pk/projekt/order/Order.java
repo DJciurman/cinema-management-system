@@ -116,4 +116,8 @@ public class Order {
   public void setDate(Date date) {
     this.date = date;
   }
+
+  public void setOrderSnack(Set<OrderSnack> orderSnack) {
+    this.orderSnack = orderSnack;
+  }
 }

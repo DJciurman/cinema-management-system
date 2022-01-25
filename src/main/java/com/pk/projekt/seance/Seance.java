@@ -4,10 +4,13 @@ import com.pk.projekt.cinema.Cinema;
 import com.pk.projekt.movie.Movie;
 import com.pk.projekt.order.Order;
 import com.pk.projekt.reservation.Reservation;
+import com.pk.projekt.seat.Seat;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -95,5 +98,20 @@ public class Seance {
 
   public void setPrice(int price) {
     this.price = price;
+  }
+
+  public ArrayList<Integer> getSeats(){
+    ArrayList<Integer> seats = new ArrayList<>();
+    for(Order oneOrder : this.order){
+      for(Seat seat : oneOrder.getSeat()){
+        seats.add(seat.getRow());
+      }
+    }
+    for(Reservation reservation : this.reservation){
+      for(Seat seat : reservation.getSeat()){
+        seats .add(seat.getRow());
+      }
+    }
+    return seats;
   }
 }

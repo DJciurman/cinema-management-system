@@ -2,6 +2,8 @@ package com.pk.projekt.orderSnack;
 
 import com.pk.projekt.order.Order;
 import com.pk.projekt.snack.Snack;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 

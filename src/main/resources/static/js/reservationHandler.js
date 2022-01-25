@@ -5,7 +5,7 @@ const total = document.getElementById("total");
 const totalPrice = document.getElementById("total-price");
 const movieSelect = document.getElementById("movie");
 localStorage.setItem("selectedSeats", null);
-populateUI();
+
 
 let ticketPrice = document.getElementById("price").value;
 
@@ -20,10 +20,8 @@ function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll(".row .seat.selected");
 
     const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
-
     localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
     document.getElementById("selected-seats").value = seatsIndex;
-    console.log(document.getElementById("selected-seats").value);
 
     const selectedSeatsCount = selectedSeats.length;
 
@@ -38,6 +36,15 @@ function updateSelectedCount() {
 // Get data from localstorage and populate UI
 function populateUI() {
     const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+    const soldSeats = JSON.parse(localStorage.getItem("soldSeats"));
+
+    if (soldSeats !== null && soldSeats.length > 0){
+        seats.forEach((seat, index) => {
+            if(soldSeats.indexOf(index) > -1) {
+                seat.classList.add("sold");
+            }
+        })
+    }
 
     if (selectedSeats !== null && selectedSeats.length > 0) {
         seats.forEach((seat, index) => {
@@ -54,12 +61,6 @@ function populateUI() {
     }
 }
 
-// Movie select event
-// movieSelect.addEventListener("change", (e) => {
-//     ticketPrice = +e.target.value;
-//     setMovieData(e.target.selectedIndex, e.target.value);
-//     updateSelectedCount();
-// });
 
 // Seat click event
 container.addEventListener("click", (e) => {
@@ -71,4 +72,35 @@ container.addEventListener("click", (e) => {
 
         updateSelectedCount();
     }
+});
+
+$(document).ready(function() {
+    $('.purchase-only').hide();
+    $('.success-message').hide();
+
+    $(document.getElementById("purchase")).click(function (){
+        $('.purchase-only').show();
+    });
+
+    $(document.getElementById("reservation")).click(function (){
+        $('.purchase-only').hide();
+    });
+
+    $(document.getElementById("select-b822")).each(function () {
+        localStorage.setItem("soldSeats", document.getElementById(this.value).value);
+    });
+
+    var soldSeatsToCompare = localStorage.getItem("soldSeats");
+    populateUI();
+
+    $('.u-btn-submit').click(function (){
+        console.log("clicked");
+        setTimeout(() => {
+            if(soldSeatsToCompare !== document.getElementById(document.getElementById("select-b822").value).value){
+                $('.u-inner-form').hide();
+                $('.success-message').show();
+                console.log("done");
+            }
+        }, 600);
+    });
 });

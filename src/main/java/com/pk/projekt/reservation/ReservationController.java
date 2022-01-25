@@ -4,6 +4,8 @@ import com.pk.projekt.movie.Movie;
 import com.pk.projekt.movie.MovieRepository;
 import com.pk.projekt.order.Order;
 import com.pk.projekt.order.OrderRepository;
+import com.pk.projekt.orderSnack.OrderSnack;
+import com.pk.projekt.payment.Payment;
 import com.pk.projekt.seance.SeanceRepository;
 import com.pk.projekt.seat.Seat;
 import com.pk.projekt.security.CustomUserDetails;
@@ -23,10 +25,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 @Controller
 public class ReservationController {
@@ -49,6 +50,7 @@ public class ReservationController {
   @Autowired
   private OrderRepository orderRepository;
 
+
   @GetMapping("/reservation/{movieId}")
   private String loadPage(@PathVariable String movieId, Model model){
     Movie movie = movieRepository.findMovieById(Integer.parseInt(movieId));
@@ -58,7 +60,7 @@ public class ReservationController {
   }
 
   @PostMapping("/reservation/{movieId}")
-  private ResponseEntity newReservation(@PathVariable String movieId, Model model, @RequestBody ReservationRequest reservationRequest, @AuthenticationPrincipal CustomUserDetails userDetails){
+  private ResponseEntity newReservation(@PathVariable String movieId, Model model, ReservationRequest reservationRequest, @AuthenticationPrincipal CustomUserDetails userDetails){
 
     String[] seats = reservationRequest.seats.split(",");
     Set<Seat> reservedSeats = new HashSet<>();
@@ -66,15 +68,18 @@ public class ReservationController {
       reservedSeats.add(new Seat(Integer.parseInt(seat)));
     }
 
-    if(reservationRequest.transactionType == "Rezerwacja"){
+
+
+    if(Objects.equals(reservationRequest.transactionType, "Rezerwacja")){
       Reservation reservation = new Reservation();
       reservation.setSeance(seanceRepository.findSeanceById(Integer.parseInt(reservationRequest.seance)));
       reservation.setUser(userRepository.findUserByName(userDetails.getUsername()));
       reservation.getSeat().addAll(reservedSeats);
+      reservation.setDescription("");
       try {
         reservationRepository.save(reservation);
       } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to create reservation");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to create reservation" + reservationRequest.toString());
       }
     }
     else{
@@ -82,6 +87,21 @@ public class ReservationController {
       order.setSeance(seanceRepository.findSeanceById(Integer.parseInt(reservationRequest.seance)));
       order.setSeat(reservedSeats);
       order.setUser(userRepository.findUserByName(userDetails.getUsername()));
+      order.setTotal(Integer.parseInt(reservationRequest.price));
+      order.setDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
+
+      Set<OrderSnack> orderSnackSet = new HashSet<>();
+      OrderSnack orderSnack = new OrderSnack();
+      orderSnack.setOrder(order);
+      orderSnack.setSnack(snackRepository.findSnackByName("Naczosy"));
+      orderSnack.setAmount(Integer.parseInt(reservationRequest.Naczosy));
+      orderSnackSet.add(orderSnack);
+      order.setOrderSnack(orderSnackSet);
+      Payment payment = new Payment();
+      payment.setState("Nowa");
+      payment.setType("Karta kredytowa");
+      payment.setOrder(order);
+      order.setPayment(payment);
       try{
         orderRepository.save(order);
       } catch (Exception e) {

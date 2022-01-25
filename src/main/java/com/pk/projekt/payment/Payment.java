@@ -21,7 +21,7 @@ public class Payment {
   private String state;
 
   @OneToOne(mappedBy = "payment", targetEntity = Order.class, cascade = CascadeType.ALL)
-  private Set<Order> order;
+  private Order order;
 
   public int getId() {
     return id;
@@ -43,7 +43,11 @@ public class Payment {
     this.state = state;
   }
 
-  public Set<Order> getOrder() {
+  public Order getOrder() {
     return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
   }
 }
