@@ -75,7 +75,7 @@
         </form>
     </div>
 </header>
-<section class="u-clearfix u-gradient u-section-1" id="sec-f01e">
+<section class="u-clearfix u-gradient u-section-1" id="sec-f01e" style="min-height: 80vh">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <h4 class="u-text u-text-default u-text-1">Logowanie</h4>
         <div class="u-form u-form-1">
@@ -106,7 +106,7 @@
             konta?</a></h5>
     </div>
 </section>
-<section class="u-clearfix u-gradient u-section-2" id="carousel_69b8">
+<section class="u-clearfix u-gradient u-section-2" id="carousel_69b8" style="min-height: 80vh">
     <div class="u-clearfix u-sheet u-sheet-1">
         <h4 class="u-text u-text-default u-text-1">Rejestracja</h4>
         <div class="u-form u-form-1">
@@ -132,7 +132,7 @@
                 <div class="u-form-group u-label-top u-form-group-3">
                     <label for="text-f7d8"
                            class="u-custom-font u-font-oswald u-form-control-hidden u-label u-label-3"></label>
-                    <input th:field="*{password}" type="text" placeholder="Wprowadź hasło" id="text-f7d8"
+                    <input th:field="*{password}" type="password" placeholder="Wprowadź hasło" id="text-f7d8"
                            name="password"
                            class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-3"
                            required="required">
@@ -156,7 +156,7 @@
                 <div class="u-form-group u-form-phone u-label-top u-form-group-6">
                     <label for="phone-19a0"
                            class="u-custom-font u-font-oswald u-form-control-hidden u-label u-label-6"></label>
-                    <input th:field="*{phoneNumber}" type="tel"
+                    <input type="tel"
                            pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})"
                            placeholder="Wprowadź swój numer telefonu" id="phone-19a0" name="phone"
                            class="u-custom-font u-font-oswald u-grey-75 u-input u-input-rectangle u-radius-30 u-input-6"

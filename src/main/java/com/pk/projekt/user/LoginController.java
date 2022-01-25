@@ -97,11 +97,12 @@ public class LoginController {
   }
 
   @PostMapping("/register")
-  private String processRegister(User user, Model model) {
+  private String processRegister(User user, Model model, @RequestParam("phone") int phone) {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     String encodedPassword = encoder.encode(user.getPassword());
     user.setPassword(encodedPassword);
     String error = "huehue";
+    user.setPhoneNumber(phone);
     try {
       repoUser.save(user);
     } catch (Exception e) {
