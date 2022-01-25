@@ -61,7 +61,6 @@ public class LoginController {
       return "logout";
     }
     model.addAttribute("user", new User());
-    model.addAttribute("error", "huehue");
     return "login";
   }
 
@@ -106,7 +105,7 @@ public class LoginController {
     try {
       repoUser.save(user);
     } catch (Exception e) {
-      error = "nie huehue";
+      error = "errorRegister";
     }
     model.addAttribute("error", error);
     model.addAttribute("user", new User());
