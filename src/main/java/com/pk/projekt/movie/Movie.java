@@ -114,6 +114,10 @@ public class Movie {
     return seance;
   }
 
+  public void setSeance(Set<Seance> seance) {
+    this.seance = seance;
+  }
+
   public int getYear() {
     return year;
   }

@@ -8,6 +8,7 @@ import com.pk.projekt.orderSnack.OrderSnack;
 import com.pk.projekt.orderSnack.OrderSnackRepository;
 import com.pk.projekt.payment.Payment;
 import com.pk.projekt.payment.PaymentRepository;
+import com.pk.projekt.seance.Seance;
 import com.pk.projekt.seance.SeanceRepository;
 import com.pk.projekt.seat.Seat;
 import com.pk.projekt.seat.SeatRepository;
@@ -52,6 +53,8 @@ public class ReservationController {
   @GetMapping("/reservation/{movieId}")
   private String loadPage(@PathVariable String movieId, Model model) {
     Movie movie = movieRepository.findMovieById(Integer.parseInt(movieId));
+    Set<Seance> seances = seanceRepository.findAsc(movie);
+    movie.setSeance(seances);
     model.addAttribute("movie", movie);
 
     return "reservation";
@@ -67,7 +70,7 @@ public class ReservationController {
     String[] seats = reservationRequest.seats.split(",");
     Set<Seat> reservedSeats = new HashSet<>();
     for (String seat : seats) {
-      reservedSeats.add(seatRepository.findSeatById(Integer.parseInt(seat)));
+      reservedSeats.add(new Seat(Integer.parseInt(seat)));
     }
 
 

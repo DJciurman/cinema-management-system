@@ -94,13 +94,14 @@ $(document).ready(function() {
     populateUI();
 
     $('.u-btn-submit').click(function (){
-        console.log("clicked");
-        setTimeout(() => {
-            if(soldSeatsToCompare !== document.getElementById(document.getElementById("select-b822").value).value){
-                $('.u-inner-form').hide();
-                $('.success-message').show();
-                console.log("done");
-            }
-        }, 600);
+        console.log("id seansu: " + document.getElementById("select-b822").value);
+        console.log("zajete miejsca: " + document.getElementById(document.getElementById("select-b822").value).value);
+        // setTimeout(() => {
+        //     if(soldSeatsToCompare !== document.getElementById(document.getElementById("select-b822").value).value){
+        //         $('.u-inner-form').hide();
+        //         $('.success-message').show();
+        //         console.log("done");
+        //     }
+        // }, 600);
     });
 });
